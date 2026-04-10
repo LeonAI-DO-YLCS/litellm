@@ -1767,6 +1767,34 @@
     "default_model_placeholder": "gpt-3.5-turbo"
   },
   {
+    "provider": "MODAL",
+    "provider_display_name": "Modal",
+    "litellm_provider": "modal",
+    "credential_fields": [
+      {
+        "key": "api_base",
+        "label": "API Base",
+        "placeholder": "https://api.us-west-2.modal.direct/v1",
+        "tooltip": "Optional override for Modal-hosted OpenAI-compatible endpoints.",
+        "required": false,
+        "field_type": "text",
+        "options": null,
+        "default_value": "https://api.us-west-2.modal.direct/v1"
+      },
+      {
+        "key": "api_key",
+        "label": "API Key",
+        "placeholder": "your-modal-api-key",
+        "tooltip": "Modal API key used for Authorization: Bearer <token>.",
+        "required": false,
+        "field_type": "password",
+        "options": null,
+        "default_value": null
+      }
+    ],
+    "default_model_placeholder": "zai-org/GLM-5.1-FP8"
+  },
+  {
     "provider": "MORPH",
     "provider_display_name": "Morph",
     "litellm_provider": "morph",

@@ -62,6 +62,12 @@ describe("provider_info_helpers", () => {
       expect(result.logo).toBe(providerLogoMap[Providers.Groq]);
     });
 
+    it("should map modal provider value to Modal display name and logo", () => {
+      const result = getProviderLogoAndName("modal");
+      expect(result.displayName).toBe(Providers.MODAL);
+      expect(result.logo).toBe(providerLogoMap[Providers.MODAL]);
+    });
+
     it("should handle provider values case-insensitively", () => {
       const result = getProviderLogoAndName("OPENAI");
       expect(result.displayName).toBe(Providers.OpenAI);
@@ -154,6 +160,10 @@ describe("provider_info_helpers", () => {
 
     it("should return watsonx placeholder for Watsonx provider", () => {
       expect(getPlaceholder(Providers.WATSONX)).toBe("watsonx/ibm/granite-3-3-8b-instruct");
+    });
+
+    it("should return modal placeholder for Modal provider", () => {
+      expect(getPlaceholder(Providers.MODAL)).toBe("zai-org/GLM-5.1-FP8");
     });
 
     it("should return default gpt-3.5-turbo placeholder for unknown provider", () => {

@@ -56,6 +56,7 @@ export enum Providers {
   LM_STUDIO = "Lm Studio",
   LLAMA = "Meta Llama",
   MARITALK = "Maritalk",
+  MODAL = "Modal",
   MiniMax = "MiniMax",
   MistralAI = "Mistral AI",
   MOONSHOT = "Moonshot",
@@ -162,6 +163,7 @@ export const provider_map: Record<string, string> = {
   LLAMA: "meta_llama",
   LM_STUDIO: "lm_studio",
   MARITALK: "maritalk",
+  MODAL: "modal",
   MiniMax: "minimax",
   MistralAI: "mistral",
   MOONSHOT: "moonshot",
@@ -259,6 +261,7 @@ export const providerLogoMap: Record<string, string> = {
   [Providers.LAMBDA_AI]: `${asset_logos_folder}lambda.svg`,
   [Providers.LM_STUDIO]: `${asset_logos_folder}lmstudio.svg`,
   [Providers.LLAMA]: `${asset_logos_folder}meta_llama.svg`,
+  [Providers.MODAL]: `${asset_logos_folder}modal.svg`,
   [Providers.MiniMax]: `${asset_logos_folder}minimax.svg`,
   [Providers.MistralAI]: `${asset_logos_folder}mistral.svg`,
   [Providers.MOONSHOT]: `${asset_logos_folder}moonshot.svg`,
@@ -362,6 +365,8 @@ export const getPlaceholder = (selectedProvider: string): string => {
     return "fal_ai/fal-ai/flux-pro/v1.1-ultra";
   } else if (selectedProvider == Providers.RunwayML) {
     return "runwayml/gen4_turbo";
+  } else if (selectedProvider === Providers.MODAL) {
+    return "zai-org/GLM-5.1-FP8";
   } else if (selectedProvider === Providers.WATSONX) {
     return "watsonx/ibm/granite-3-3-8b-instruct";
   } else if (selectedProvider === Providers.Cursor) {

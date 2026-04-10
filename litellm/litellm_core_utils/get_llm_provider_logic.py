@@ -318,6 +318,9 @@ def get_llm_provider(  # noqa: PLR0915
                     elif endpoint == "https://api.hyperbolic.xyz/v1":
                         custom_llm_provider = "hyperbolic"
                         dynamic_api_key = get_secret_str("HYPERBOLIC_API_KEY")
+                    elif endpoint == "https://api.us-west-2.modal.direct/v1":
+                        custom_llm_provider = "modal"
+                        dynamic_api_key = get_secret_str("MODAL_API_KEY")
                     elif endpoint == "https://ai-gateway.vercel.sh/v1":
                         custom_llm_provider = "vercel_ai_gateway"
                         dynamic_api_key = get_secret_str("VERCEL_AI_GATEWAY_API_KEY")

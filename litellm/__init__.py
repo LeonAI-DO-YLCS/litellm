@@ -575,6 +575,7 @@ deepgram_models: Set = set()
 elevenlabs_models: Set = set()
 dashscope_models: Set = set()
 moonshot_models: Set = set()
+modal_models: Set = set()
 publicai_models: Set = set()
 v0_models: Set = set()
 morph_models: Set = set()
@@ -818,6 +819,8 @@ def add_known_models(model_cost_map: Optional[Dict] = None):
             dashscope_models.add(key)
         elif value.get("litellm_provider") == "moonshot":
             moonshot_models.add(key)
+        elif value.get("litellm_provider") == "modal":
+            modal_models.add(key)
         elif value.get("litellm_provider") == "publicai":
             publicai_models.add(key)
         elif value.get("litellm_provider") == "v0":
@@ -959,6 +962,7 @@ model_list = list(
     | elevenlabs_models
     | dashscope_models
     | moonshot_models
+    | modal_models
     | publicai_models
     | v0_models
     | morph_models
@@ -1057,6 +1061,7 @@ models_by_provider: dict = {
     "heroku": heroku_models,
     "dashscope": dashscope_models,
     "moonshot": moonshot_models,
+    "modal": modal_models,
     "publicai": publicai_models,
     "v0": v0_models,
     "morph": morph_models,

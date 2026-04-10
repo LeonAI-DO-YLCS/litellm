@@ -80,6 +80,14 @@
     "base_url": "https://api.gmi-serving.com/v1",
     "api_key_env": "GMI_API_KEY"
   },
+  "modal": {
+    "base_url": "https://api.us-west-2.modal.direct/v1",
+    "api_key_env": "MODAL_API_KEY",
+    "api_base_env": "MODAL_API_BASE",
+    "param_mappings": {
+      "max_completion_tokens": "max_tokens"
+    }
+  },
   "sarvam": {
     "base_url": "https://api.sarvam.ai/v1",
     "api_key_env": "SARVAM_API_KEY",

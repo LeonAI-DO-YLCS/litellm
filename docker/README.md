@@ -86,6 +86,42 @@ docker run --rm --network none --entrypoint prisma ghcr.io/berriai/litellm:main-
 
 This command should succeed (showing engine versions) even with `--network none`, confirming that Prisma binaries are available without network access.
 
+## LAN and Tailscale Only Deployment
+
+Use the dedicated compose file when you want LiteLLM reachable from the local network, Tailscale, and the Windows host, but not generally exposed to other inbound clients.
+
+1. Ensure the project root `.env` contains at least `LITELLM_MASTER_KEY=...`.
+2. Start the stack:
+
+```bash
+docker compose -f docker-compose.network-only.yml up -d --build
+```
+
+3. Restrict Docker-published access on port `4000` to loopback, your LAN CIDR, and Tailscale:
+
+```bash
+sudo LAN_CIDR=192.168.1.0/24 TAILSCALE_CIDR=100.64.0.0/10 ./docker/restrict-litellm-port.sh apply
+```
+
+4. Verify local health:
+
+```bash
+curl http://127.0.0.1:4000/health/liveliness
+```
+
+Notes:
+
+- The PostgreSQL service is not published outside Docker in this deployment.
+- The checked-in config enables `store_model_in_db`, so you can add provider-backed models later through the UI or management endpoints.
+- If you want to change the exposed port, export `LITELLM_PORT` before starting Compose and use the same value when applying the firewall script.
+
+Rollback:
+
+```bash
+sudo ./docker/restrict-litellm-port.sh remove
+docker compose -f docker-compose.network-only.yml down
+```
+
 ## Troubleshooting
 
 -   **`build_admin_ui.sh: not found`**: This error can occur if the Docker build context is not set correctly. Ensure that you are running the `docker-compose` command from the root of the project.
